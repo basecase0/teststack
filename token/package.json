@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "express": "^4.19.2",
+    "js-priority-queue": "^0.1.5",
+    "uuid": "^10.0.0"
+  }
+}
