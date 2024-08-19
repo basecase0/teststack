@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Log Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        #log {
+            white-space: pre-wrap;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-height: 500px;
+            overflow-y: scroll;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Real-Time Log Viewer</h1>
+    <div id="log"></div>
+
+    <script>
+        const logDiv = document.getElementById('log');
+        const ws = new WebSocket('ws://localhost:8080'); // Connect to the WebSocket server
+
+        // Handle incoming WebSocket messages
+        ws.onmessage = (event) => {
+            // Append new log data to the logDiv
+            logDiv.innerHTML += event.data + '\n';
+            // Scroll to the bottom of the logDiv
+            // logDiv.scrollTop = logDiv.scrollHeight;
+        };
+    </script>
+</body>
+</html>
